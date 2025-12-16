@@ -93,9 +93,80 @@ Replace professional trading terminals
 
 The focus is architecture, integration, and system design, not financial infrastructure replication.
 
-🚀 Getting Started
-npm install
+
+🔐 Environment Variables Setup
+
+This project uses environment variables to securely manage API keys, database connections, and authentication secrets.
+These files are not committed to GitHub and must be created locally or configured in the deployment platform.
+
+1️⃣ Create the Environment File
+
+In the project root, create a file named:
+
+.env.local
+
+
+For Next.js, .env.local is automatically loaded in development and ignored by Git.
+
+2️⃣ Add Required Variables
+
+Paste the following and fill in your own values:
+
+# Authentication
+BETTER_AUTH_SECRET=your_secure_random_string
+BETTER_AUTH_URL=http://localhost:3000
+
+# Database
+MONGODB_URI=your_mongodb_atlas_connection_string
+
+# Market Data APIs
+FINNHUB_API_KEY=your_finnhub_api_key
+ALPHA_VANTAGE_API_KEY=your_alpha_vantage_api_key
+
+# App
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+
+
+⚠️ Do not share or commit this file.
+All keys should remain private.
+
+3️⃣ Restart the Development Server
+
+After saving the file, restart the app:
+
 npm run dev
+
+
+Changes to environment variables will not take effect until the server restarts.
+
+4️⃣ Deployment Configuration
+
+When deploying:
+
+Vercel
+
+Add the same variables under
+Project Settings → Environment Variables
+
+Do not upload .env.local
+
+Other Platforms
+
+Configure env vars through the platform dashboard
+
+Never hardcode secrets in the codebase
+
+5️⃣ Verification
+
+If configured correctly:
+
+Stock search works
+
+Market data loads
+
+News widgets render
+
+No “API key not configured” errors appear in logs
 
 
 Make sure to configure environment variables in .env before running the project.
