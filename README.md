@@ -1,174 +1,138 @@
-📈 MarketForge
+# 📊 MarketForge
 
-MarketForge is a full-stack stock tracking and market analysis web application focused on Indian equity markets. It combines real-time market visualization, curated India-centric news, alerts, and clean system design to simulate how modern trading and market intelligence platforms are built.
+**A modern, stock analysis and market intelligence platform.**
 
-This project was built to explore how real market platforms work under the hood, not just how charts look on the surface.
+🔗 **Live Demo:** https://stock-app-swart.vercel.app/  
+📦 **Repository:** https://github.com/Srihari1176/stock_app
 
-🎯 Motivation
+---
 
-My interest in the stock market grew beyond simply tracking prices or placing trades. I wanted to understand how real platforms integrate:
+## Overview
 
-Market data and charts
+MarketForge is a full-stack stock dashboard designed to deliver **clean market data, real-time charts, and curated financial news** without unnecessary complexity or paywalls.
 
-News flow and market context
+The project is built with production-grade architecture to reflect how real trading and analytics platforms are structured, while remaining lightweight and extensible.
 
-Alerts and user preferences
+---
 
-Scalable frontend and backend architecture
+## Features
 
-Instead of building a small demo, I chose to build a production-style stock dashboard focused on Indian markets, solving real issues such as symbol compatibility, third-party limitations, and data reliability.
+- 🔍 Real-time stock search  
+- 📈 Interactive charts powered by TradingView widgets  
+- 📰 India-centric market news aggregation  
+- ⚡ Fast, responsive UI with modern styling  
+- 🔐 Authentication-ready backend structure  
+- 🧱 Scalable and modular codebase  
 
-🧱 Architecture Overview
+---
 
-The application is built using Next.js App Router, with a clear separation of concerns:
+## Tech Stack
 
-app/         → Routing, layouts, API routes
-components/  → Reusable UI components
-lib/         → Business logic, integrations, helpers
-database/    → Database configuration and models
-middleware/  → Request-level logic (auth, protection)
-hooks/       → Custom React hooks
-types/       → Shared TypeScript types
+### Frontend
+- **Next.js 15 (App Router)**
+- **TypeScript**
+- **Tailwind CSS**
+- **shadcn/ui**
 
+### Backend
+- **Next.js Server Actions & API Routes**
+- **MongoDB (Atlas)**
+- **Mongoose**
 
-This structure mirrors real-world production applications and makes the system easier to reason about and extend.
+### Market Data
+- **Finnhub API**
+- **Alpha Vantage API**
+- **TradingView Widgets**
 
-📊 Market Data & Charts
+### Deployment
+- **Vercel**
 
-TradingView widgets are used for:
+---
 
-Market charts
+## Project Structure
 
-Heatmaps
+```txt
+app/
+ ├─ (auth)/          # Authentication routes
+ ├─ (root)/          # Main application pages
+ ├─ api/             # Server actions & API handlers
+components/
+ ├─ ui/              # Reusable UI components
+lib/
+ ├─ actions/         # Business logic (stocks, auth)
+ ├─ auth/            # Authentication configuration
+ ├─ database/        # MongoDB connection
+middleware.ts        # Route protection & middleware
+```
 
-Market overviews
+---
 
-TradingView is treated strictly as a visualization layer, not a source of truth.
+## Environment Variables
 
-Special care is taken with Indian market symbols, as TradingView support is:
+Create a `.env.local` file in the root directory:
 
-NSE-first
-
-Partially supportive of BSE
-
-Inconsistent for small-cap stocks
-
-Unsupported symbols are handled gracefully with fallbacks or clear “Chart not available” states instead of breaking the UI.
-
-⚙️ Tech Stack
-
-Frontend & Backend: Next.js (App Router)
-
-Language: TypeScript
-
-Charts & Market Visuals: TradingView Widgets
-
-Styling: Tailwind CSS
-
-News Aggregation: RSS (server-side)
-
-Database: MongoDB (via Mongoose)
-
-Auth & Middleware: Custom middleware + auth utilities
-
-Containerization: Docker & Docker Compose
-
-🧠 Key Learnings
-
-Third-party services are powerful but unreliable; systems must degrade gracefully.
-
-Market data platforms require careful symbol normalization, especially for Indian exchanges.
-
-Server-side data aggregation improves reliability and security.
-
-Clean project structure matters as much as features.
-
-Product thinking is as important as technical implementation.
-
-🚫 What This Project Does Not Do
-
-Execute trades or provide brokerage services
-
-Act as a real-time price feed provider
-
-Replace professional trading terminals
-
-The focus is architecture, integration, and system design, not financial infrastructure replication.
-
-🔐 Environment Variables Setup
-
-This project uses environment variables to securely manage API keys, database connections, and authentication secrets.
-These files are not committed to GitHub and must be created locally or configured on the deployment platform.
-
-1️⃣ Create the Environment File
-
-In the project root, create a file named:
-
-.env.local
-
-
-For Next.js, .env.local is automatically loaded in development and ignored by Git.
-
-2️⃣ Add Required Variables
+```env
 # Authentication
-BETTER_AUTH_SECRET=your_secure_random_string
+BETTER_AUTH_SECRET=your_secret_here
 BETTER_AUTH_URL=http://localhost:3000
 
 # Database
-MONGODB_URI=your_mongodb_atlas_connection_string
+MONGODB_URI=your_mongodb_atlas_uri
 
-# Market Data APIs
+# Market APIs
 FINNHUB_API_KEY=your_finnhub_api_key
 ALPHA_VANTAGE_API_KEY=your_alpha_vantage_api_key
+ALPHA_VANTAGE_BASE_URL=https://www.alphavantage.co/query
 
-# App
-NEXT_PUBLIC_APP_URL=http://localhost:3000
+# Optional
+GEMINI_API_KEY=your_gemini_key
+NODEMAILER_EMAIL=your_email
+NODEMAILER_PASSWORD=your_app_password
+```
 
+⚠️ Never commit this file to version control.
 
-⚠️ Do not share or commit this file. All keys must remain private.
+---
 
-3️⃣ Restart the Development Server
+## Local Development
+
+```bash
+npm install
 npm run dev
+```
 
+App runs at:  
+👉 http://localhost:3000
 
-Environment variable changes require a server restart to take effect.
+---
 
-4️⃣ Deployment Configuration
+## Deployment (Vercel)
 
-Vercel
+1. Push the repository to GitHub  
+2. Import it into **Vercel**  
+3. Add all environment variables  
+4. Deploy  
 
-Add variables under Project Settings → Environment Variables
+Live deployment:  
+👉 https://stock-app-swart.vercel.app/
 
-Do not upload .env.local
+---
 
-Other Platforms
+## Roadmap
 
-Configure environment variables via the platform dashboard
+- Advanced stock scanners & filters  
+- Technical indicators & signals  
+- AI-generated stock summaries  
+- Watchlists and price alerts  
 
-Never hardcode secrets in the codebase
+---
 
-5️⃣ Verification
+## License
 
-If configured correctly:
+Licensed under the **AGPL-3.0 License**.
 
-Stock search works
+---
 
-Market data loads
+## Author
 
-News widgets render
-
-No “API key not configured” errors appear in logs
-
-📌 Future Improvements
-
-Symbol-specific India news on stock pages
-
-NSE ↔ BSE automatic fallback logic
-
-News caching for performance
-
-Sector-wise and small-cap focused dashboards
-
-📄 License
-
-This project is licensed under the terms specified in the LICENSE file.
+Built by **Srihari**  
