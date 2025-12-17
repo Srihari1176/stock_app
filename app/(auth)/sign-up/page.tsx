@@ -67,7 +67,7 @@ const SignUp = () => {
                 <InputField
                     name="email"
                     label="Email"
-                    placeholder="opendevsociety@cc.cc"
+                    placeholder="marketforge@co.in"
                     register={register}
                     error={errors.email}
                     validation={{
