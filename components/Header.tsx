@@ -11,6 +11,12 @@ const Header = async ({ user }: { user: User }) => {
         <header className="sticky top-0 header">
             <div className="container header-wrapper">
                 <Link href="/" className="flex items-center justify-center gap-2">
+                      <Image
+                        src="https://image.pngaaa.com/216/4339216-middle.png"
+                        alt="MarketForge"
+                        width={200}
+                        height={50}
+                    />
                 </Link>
                 <nav className="hidden sm:block">
                     <NavItems initialStocks={initialStocks}/>
